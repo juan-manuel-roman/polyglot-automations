@@ -38,11 +38,9 @@ public class RequestProperty {
 	static {
 		try (InputStream propertiesFile = new FileInputStream("api.properties")) {
 			requestProperties.load(propertiesFile);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 	
 	/**
