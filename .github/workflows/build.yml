@@ -33,6 +33,6 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run:
-          cd -- "java/back-end/rest-assured/restassured"
+        run: |
+          cd java/backend/rest_assured/restassured
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=juan-manuel-roman_polyglot-automations
