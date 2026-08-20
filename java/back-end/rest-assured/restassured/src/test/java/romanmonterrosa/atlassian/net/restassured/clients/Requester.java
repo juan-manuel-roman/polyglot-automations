@@ -13,89 +13,112 @@ import romanmonterrosa.atlassian.net.restassured.config.RequestProperty.Property
 /**
  * Requester class to handle requests.
  */
-public abstract class Requester {
+public class Requester {
 	
 	/**
 	 * Request properties.
 	 */
-	protected RequestProperty properties;
 	private final RequestSpecification request;
+	private String path;
 	
 	/**
 	 * Constructor for a requester. Open APIS not requiring an access token.
-	 * @param props The request properties for paths and url.
+	 * @param path The path to send the requests.
 	 */
-	public Requester(RequestProperty props) {
-		this.properties = props;
+	public Requester(String path) {
+		this.path = path;
 		this.request = RestAssured.given()
-				.baseUri(properties.getProperty(Property.URL))
+				.baseUri(RequestProperty.getProperty(Property.URL))
 				.contentType(ContentType.JSON)
 				.log().ifValidationFails();
 	}
 	
 	/**
 	 * Constructor for a requester. It provides an access token for authorization.
-	 * @param props The request properties for paths and url.
+	 * @param path The path to send the requests.
 	 * @param accessToken The access token for authorization.
 	 */
-	public Requester(RequestProperty props, String accessToken) {
-		this(props);
-		this.request.header(new Header("Authorization", "Bearar" + accessToken));
+	public Requester(String path, String accessToken) {
+		this(path);
+		this.request.header(new Header("Authorization", "Bearar " + accessToken));
 	}
 
 	/**
-	 * Performs a GET request in <path>, providing any <queryParams>.  
-	 * @param path The path to perform the request.
-	 * @param queryParams The query parameters necessary for this request.
-	 * @return <Response> The response for this request.
+	 * Performs a GET request in the configured path, providing the request {@code queryParams}.  
+	 * @param queryParams The query parameters for this request.
+	 * @return A {@link Response} object for this request.
 	 */
-	public Response get(String path, Map<String, Object> queryParams) {
+	public Response get(Map<String, Object> queryParams) {
 		RequestSpecification specification = RestAssured.given().spec(this.request);
 		if (queryParams != null && !queryParams.isEmpty()) {
 			specification.queryParams(queryParams);
 		}
-		return specification.get(path);
+		return specification.get(this.path);
 	}
 	
 	/**
-	 * Performs a POST request in <path>, providing the request <body>.
-	 * @param path The path to perform the request.
-	 * @param body The body to be sent in the request.
-	 * @return <Response> The response for this request.
+	 * Performs a POST request in the configured path, providing the request {@code body}.
+	 * @param body The body to send in the request.
+	 * @return A {@link Response} object for this request.
 	 */
-	public Response post(String path, String body) {
+	public Response post(String body) {
 		RequestSpecification specification = RestAssured.given().spec(this.request);
 		if (body != null) {
 			specification.body(body);
 		}
-		return specification.post(path);
+		return specification.post(this.path);
 	}
 	
 	/**
-	 * Performs a PUT request in <path>, providing the request <body>
-	 * @param path The path to perform the request.
-	 * @param body The body to be sent in the request.
-	 * @return <Response> The response for this request.
+	 * Performs a PUT request in the configured path, providing the request {@code body}
+	 * @param body The body to send in the request.
+	 * @return A {@link Response} object for this request.
 	 */
-	public Response put(String path, String body) {
+	public Response put(String body) {
 		RequestSpecification specification = RestAssured.given().spec(this.request);
 		if (body != null) {
 			specification.body(body);
 		}
-		return specification.put(path);
+		return specification.put(this.path);
 	}
 	
 	/**
-	 * Performs a DELETE request in <path>.
-	 * @param path The path to perform the request.
-	 * @return <Response> The response for this request.
+	 * Performs a DELETE request in the configured path.
+	 * @return A {@link Response} object for this request.
 	 */
 	public Response delete(String path) {
-		return RestAssured.given().spec(this.request).delete(path);
+		return RestAssured.given().spec(this.request).delete(this.path);
 	}
 	
-	abstract Response get(Map<String, Object> queryParams);
-	abstract Response post(String body);
-	abstract Response put(String body);
-	abstract Response delete();
+	/**
+	 * Factory method to create a request for the brands endpoint.
+	 * @return A {@link Requester} with the brands path configured.
+	 */
+	public static Requester brandsRequest() {
+		return new Requester(RequestProperty.getProperty(Property.BRANDS_PATH));
+	}
+	
+	/**
+	 * Factory method to create a request for the login endpoint.
+	 * @return A {@link Requester} with the login path configured.
+	 */
+	public static Requester loginRequest() {
+		return new Requester(RequestProperty.getProperty(Property.LOGIN_PATH));
+	}
+	
+	/**
+	 * Factory method to create a request for the products endpoint.
+	 * @return A {@link Requester} with the products path configured.
+	 */
+	public static Requester productsRequest() {
+		return new Requester(RequestProperty.getProperty(Property.PRODUCTS_PATH));
+	}
+	
+	/**
+	 * Factory method to create a request for the search endpoint.
+	 * @return A {@link Requester} with the search path configured.
+	 */
+	public static Requester searchRequest() {
+		return new Requester(RequestProperty.getProperty(Property.SEARCH_PATH));
+	}
 }
