@@ -86,7 +86,7 @@ public class Requester {
 	 * Performs a DELETE request in the configured path.
 	 * @return A {@link Response} object for this request.
 	 */
-	public Response delete(String path) {
+	public Response delete() {
 		return RestAssured.given().spec(this.request).delete(this.path);
 	}
 	
