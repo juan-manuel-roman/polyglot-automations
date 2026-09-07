@@ -1,7 +1,7 @@
 package romanmonterrosa.atlassian.net.restassured.validations;
 
 import io.restassured.response.Response;
-import romanmonterrosa.atlassian.net.restassured.models.BrandsResponse;
+import romanmonterrosa.atlassian.net.restassured.models.BrandsListResponse;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
@@ -20,7 +20,7 @@ public class BrandsValidator extends BaseValidator<BrandsValidator> {
     /**
      * The response body
      */
-    private BrandsResponse body;
+    private BrandsListResponse body;
 
     /**
      * Constructor for the class
@@ -28,7 +28,7 @@ public class BrandsValidator extends BaseValidator<BrandsValidator> {
      */
     public BrandsValidator(Response response) {
         super(response);
-        this.body = this.mapResponseBody(BrandsResponse.class);
+        this.body = this.mapResponseBody(BrandsListResponse.class);
     }
 
     /**
@@ -55,7 +55,7 @@ public class BrandsValidator extends BaseValidator<BrandsValidator> {
      * @return This object, to chain calls.
      */
     public BrandsValidator validateEachBrandIsNotEmptyOrNull() {
-        for(BrandsResponse.Brand element : this.body.brands()) {
+        for(BrandsListResponse.Brand element : this.body.brands()) {
             assertThat(element.brand(), not(emptyString()));
             assertThat(element.brand(), notNullValue());
         }
