@@ -5,10 +5,10 @@ import java.util.List;
 /**
  * Record class representing the JSON response.
  * BrandsResponse Representation of the response.
- * @param responseCode Response code key.
+ * @param responseCode responseCode key.
  * @param brands Brands key, as a list.
  */
-public record BrandsResponse (
+public record BrandsListResponse (
     int responseCode,
     List<Brand> brands
 ) {
