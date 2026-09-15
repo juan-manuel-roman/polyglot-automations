@@ -1,0 +1,14 @@
+romanmonterrosa/.DS_Store
+romanmonterrosa/atlassian/net/.DS_Store
+romanmonterrosa/atlassian/net/restassured/config/Settings.class
+romanmonterrosa/atlassian/net/restassured/paths/Path.class
+romanmonterrosa/atlassian/net/restassured/.DS_Store
+romanmonterrosa/atlassian/net/restassured/validations/BaseValidator.class
+romanmonterrosa/atlassian/net/restassured/models/BrandsListResponse.class
+romanmonterrosa/atlassian/net/restassured/validations/BrandsValidator.class
+romanmonterrosa/atlassian/.DS_Store
+romanmonterrosa/atlassian/net/restassured/clients/Requester.class
+romanmonterrosa/atlassian/net/restassured/models/BrandsListResponse$Brand.class
+.DS_Store
+romanmonterrosa/atlassian/net/restassured/utils/StatusCodes.class
+romanmonterrosa/atlassian/net/restassured/models/BrandsUpdateResponse.class

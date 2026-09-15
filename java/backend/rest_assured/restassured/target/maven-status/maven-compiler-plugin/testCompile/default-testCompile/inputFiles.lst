@@ -1,0 +1,8 @@
+/Users/genesis/Documents/polyglot-automations/java/backend/rest_assured/restassured/src/test/java/romanmonterrosa/atlassian/net/restassured/clients/Requester.java
+/Users/genesis/Documents/polyglot-automations/java/backend/rest_assured/restassured/src/test/java/romanmonterrosa/atlassian/net/restassured/config/Settings.java
+/Users/genesis/Documents/polyglot-automations/java/backend/rest_assured/restassured/src/test/java/romanmonterrosa/atlassian/net/restassured/models/BrandsListResponse.java
+/Users/genesis/Documents/polyglot-automations/java/backend/rest_assured/restassured/src/test/java/romanmonterrosa/atlassian/net/restassured/models/BrandsUpdateResponse.java
+/Users/genesis/Documents/polyglot-automations/java/backend/rest_assured/restassured/src/test/java/romanmonterrosa/atlassian/net/restassured/paths/Path.java
+/Users/genesis/Documents/polyglot-automations/java/backend/rest_assured/restassured/src/test/java/romanmonterrosa/atlassian/net/restassured/utils/StatusCodes.java
+/Users/genesis/Documents/polyglot-automations/java/backend/rest_assured/restassured/src/test/java/romanmonterrosa/atlassian/net/restassured/validations/BaseValidator.java
+/Users/genesis/Documents/polyglot-automations/java/backend/rest_assured/restassured/src/test/java/romanmonterrosa/atlassian/net/restassured/validations/BrandsValidator.java
