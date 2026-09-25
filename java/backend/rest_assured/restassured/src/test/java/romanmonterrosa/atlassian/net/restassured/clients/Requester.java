@@ -7,8 +7,8 @@ import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import romanmonterrosa.atlassian.net.restassured.config.RequestProperty;
-import romanmonterrosa.atlassian.net.restassured.config.RequestProperty.Property;
+import romanmonterrosa.atlassian.net.restassured.config.Settings;
+import romanmonterrosa.atlassian.net.restassured.paths.Path;
 
 /**
  * Requester class to handle requests.
@@ -28,7 +28,7 @@ public class Requester {
 	public Requester(String path) {
 		this.path = path;
 		this.request = RestAssured.given()
-				.baseUri(RequestProperty.getProperty(Property.URL))
+				.baseUri(Settings.URL)
 				.contentType(ContentType.JSON)
 				.log().ifValidationFails();
 	}
@@ -95,7 +95,7 @@ public class Requester {
 	 * @return A {@link Requester} with the brands path configured.
 	 */
 	public static Requester brandsRequest() {
-		return new Requester(RequestProperty.getProperty(Property.BRANDS_PATH));
+		return new Requester(Path.BRANDS_PATH);
 	}
 	
 	/**
@@ -103,7 +103,7 @@ public class Requester {
 	 * @return A {@link Requester} with the login path configured.
 	 */
 	public static Requester loginRequest() {
-		return new Requester(RequestProperty.getProperty(Property.LOGIN_PATH));
+		return new Requester(Path.LOGIN_PATH);
 	}
 	
 	/**
@@ -111,7 +111,7 @@ public class Requester {
 	 * @return A {@link Requester} with the products path configured.
 	 */
 	public static Requester productsRequest() {
-		return new Requester(RequestProperty.getProperty(Property.PRODUCTS_PATH));
+		return new Requester(Path.PRODUCTS_PATH);
 	}
 	
 	/**
@@ -119,6 +119,6 @@ public class Requester {
 	 * @return A {@link Requester} with the search path configured.
 	 */
 	public static Requester searchRequest() {
-		return new Requester(RequestProperty.getProperty(Property.SEARCH_PATH));
+		return new Requester(Path.SEARCH_PATH);
 	}
 }
